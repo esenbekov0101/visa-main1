@@ -1,0 +1,29 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "~=4.0.0"
+python-dotenv = "*"
+django-better-admin-arrayfield = "*"
+djangorestframework = "*"
+pyjwt = "*"
+django-rosetta = "*"
+drf-yasg = "*"
+django-cors-headers = "*"
+psycopg2 = "*"
+gunicorn = "*"
+djangorestframework-simplejwt = "*"
+django-filter = "*"
+django-guardian = "*"
+tzdata = "*"
+celery = "*"
+redis = "*"
+sqlalchemy = "*"
+django-admin-rangefilter = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.10"

@@ -1,0 +1,109 @@
+name: Continuous Integration and Delivery
+
+on: [ push ]
+
+env:
+  BUILD_IMAGE: ghcr.io/$(echo $GITHUB_REPOSITORY | tr '[:upper:]' '[:lower:]')/build
+  WEB_IMAGE: ghcr.io/$(echo $GITHUB_REPOSITORY | tr '[:upper:]' '[:lower:]')/web
+  NGINX_IMAGE: ghcr.io/$(echo $GITHUB_REPOSITORY | tr '[:upper:]' '[:lower:]')/nginx
+  REDIS_IMAGE: ghcr.io/$(echo $GITHUB_REPOSITORY | tr '[:upper:]' '[:lower:]')/redis
+
+jobs:
+
+  build:
+    name: Build Docker Images
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v1
+      - name: Add environment variables to .env
+        run: |
+          echo DEBUG=${{ secrets.DEBUG }} >> ./.env
+          echo DATABASE=${{ secrets.DATABASE }} >> ./.env
+          echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> ./.env
+          echo ALLOWED_HOSTS=${{ secrets.ALLOWED_HOSTS }} >> ./.env
+          echo CELERY_BROKER_URL=${{ secrets.CELERY_BROKER_URL }} >> ./.env
+          echo DB_NAME=${{ secrets.DB_NAME }} >> ./.env
+          echo DB_USER=${{ secrets.DB_USER }} >> ./.env
+          echo DB_PWD=${{ secrets.DB_PWD }} >> ./.env
+          echo DB_HOST=${{ secrets.DB_HOST }} >> ./.env
+          echo DB_SOCK=${{ secrets.DB_SOCK }} >> ./.env
+          echo DB_PORT=${{ secrets.DB_PORT }} >> ./.env
+          echo ACCESS_TOKEN_LIFETIME=${{ secrets.ACCESS_TOKEN_LIFETIME }} >> ./.env
+          echo REFRESH_TOKEN_LIFETIME=${{ secrets.REFRESH_TOKEN_LIFETIME }} >> ./.env
+      - name: Set environment variables
+        run: |
+          echo "BUILD_IMAGE=$(echo ${{ env.BUILD_IMAGE }} )" >> $GITHUB_ENV
+          echo "WEB_IMAGE=$(echo ${{ env.WEB_IMAGE }} )" >> $GITHUB_ENV
+          echo "NGINX_IMAGE=$(echo ${{ env.NGINX_IMAGE }} )" >> $GITHUB_ENV
+          echo "REDIS_IMAGE=$(echo ${{ env.REDIS_IMAGE }} )" >> $GITHUB_ENV
+      - name: Login to Github Packages
+        run: echo ${PERSONAL_ACCESS_TOKEN} | docker login ghcr.io -u ${{ secrets.NAMESPACE}} --password-stdin
+        env:
+          PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+      - name: Pull images
+        run: |
+          docker pull ${{ env.BUILD_IMAGE }} || true
+          docker pull ${{ env.WEB_IMAGE }} || true
+          docker pull ${{ env.NGINX_IMAGE }} || true
+          docker pull ${{ env.REDIS_IMAGE }} || true
+      - name: Build images
+        run: |
+          docker-compose -f docker-compose.ci.yml build
+      - name: Push images
+        run: |
+          docker push ${{ env.BUILD_IMAGE }}
+          docker push ${{ env.WEB_IMAGE }}
+          docker push ${{ env.NGINX_IMAGE }}
+          docker push ${{ env.REDIS_IMAGE }}
+
+  deploy:
+    name: Deploy to Host
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v1
+      - name: Add environment variables to .env
+        run: |
+          echo WEB_IMAGE=${{ env.WEB_IMAGE }} >> ./.env
+          echo NGINX_IMAGE=${{ env.NGINX_IMAGE }} >> ./.env
+          echo REDIS_IMAGE="${{ env.REDIS_IMAGE }}" >> ./.env
+          echo NAMESPACE=${{ secrets.NAMESPACE }} >> ./.env
+          echo PERSONAL_ACCESS_TOKEN=${{ secrets.PERSONAL_ACCESS_TOKEN }} >> ./.env
+          echo POSTGRES_USER=${{ secrets.DB_USER }} >> ./.db.env
+          echo POSTGRES_PASSWORD=${{ secrets.DB_PWD }} >> ./.db.env
+          echo POSTGRES_DB=${{ secrets.DB_NAME }} >> ./.db.env
+          echo POSTGRES_HOST=${{ secrets.DB_HOST }} >> ./.backups.env
+          echo POSTGRES_DB=${{ secrets.DB_NAME }} >> ./.backups.env
+          echo POSTGRES_USER=${{ secrets.DB_USER }} >> ./.backups.env
+          echo POSTGRES_PASSWORD=${{ secrets.DB_PWD }} >> ./.backups.env
+          echo POSTGRES_EXTRA_OPTS=${{ secrets.POSTGRES_EXTRA_OPTS }} >> ./.backups.env
+          echo SCHEDULE=${{ secrets.SCHEDULE }} >> ./.backups.env
+          echo BACKUP_KEEP_DAYS=${{ secrets.BACKUP_KEEP_DAYS }} >> ./.backups.env
+          echo BACKUP_KEEP_WEEKS=${{ secrets.BACKUP_KEEP_WEEKS }} >> ./.backups.env
+          echo BACKUP_KEEP_MONTHS=${{ secrets.BACKUP_KEEP_MONTHS }} >> ./.backups.env
+          echo HEALTHCHECK_PORT=${{ secrets.HEALTHCHECK_PORT }} >> ./.backups.env
+      - name: Add the private SSH key to the ssh-agent
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+        run: |
+          mkdir -p ~/.ssh
+          ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          ssh-add - <<< "${{ secrets.PRIVATE_KEY }}"
+      - name: Build and deploy images on Host
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+        run: |
+          scp -o StrictHostKeyChecking=no "./.env" "./.db.env" "./.backups.env" "./docker-compose.yml" root@${{ secrets.HOST_IP_ADDRESS }}:/root/visa
+          ssh -o StrictHostKeyChecking=no root@${{ secrets.HOST_IP_ADDRESS }} << 'ENDSSH'
+            cd /root/visa
+            source ./.env
+            docker login ghcr.io -u $NAMESPACE -p $PERSONAL_ACCESS_TOKEN
+            docker pull $WEB_IMAGE
+            docker pull $NGINX_IMAGE
+            docker pull $REDIS_IMAGE
+            docker-compose -f docker-compose.yml up -d
+            docker image prune -f
+          ENDSSH

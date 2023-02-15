@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  builder:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: builder
+      cache_from:
+        - "${BUILD_IMAGE}"
+    image: "${BUILD_IMAGE}"
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: final
+      cache_from:
+        - "${BUILD_IMAGE}"
+        - "${WEB_IMAGE}"
+    image: "${WEB_IMAGE}"
+    env_file:
+      - .env
+
+  nginx:
+    build:
+      context: ./nginx
+      cache_from:
+        - "${NGINX_IMAGE}"
+    image: "${NGINX_IMAGE}"
+
+#  redis:
+#    build:
+#      context: ./redis
+#      cache_from:
+#        - "${REDIS_IMAGE}"
+#    image: "${REDIS_IMAGE}"

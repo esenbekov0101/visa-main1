@@ -1,0 +1,97 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:13.3-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - /var/run/visa:/var/run/postgresql
+    ports:
+      - '5432:5432'
+    env_file:
+      ./.db.env
+    restart: unless-stopped
+
+  backups:
+    container_name: backup
+    image: prodrigestivill/postgres-backup-local
+    restart: unless-stopped
+    volumes:
+      - ../backup:/backups
+    links:
+      - db:db
+    depends_on:
+      - db
+    env_file:
+       ./.backups.env
+
+  redis:
+    image: redis:6.2.6-alpine
+#    command: "redis-server /etc/redis.conf"
+#    volumes:
+#      - ./run/redis:/tmp/redis
+    expose:
+      - 6379
+    depends_on:
+      - db
+
+  web:
+    image: "${WEB_IMAGE}"
+    volumes:
+      - static_volume:/home/app/web/static
+      - media_volume:/home/app/web/media
+      - /var/run/visa:/var/run/gunicorn
+    depends_on:
+      - db
+      - redis
+    command:
+      sh -c "python manage.py makemigrations --noinput &&
+      python manage.py migrate --noinput &&
+      python manage.py collectstatic --noinput &&
+      gunicorn root.wsgi:application --workers 2 --user=root --group root --bind=unix:/var/run/gunicorn/gunicorn.sock --log-file=-"
+    restart: unless-stopped
+
+  celery-worker:
+    image: "${WEB_IMAGE}"
+    volumes:
+      - static_volume:/home/app/web/static
+      - media_volume:/home/app/web/media
+      - /var/run/visa:/var/run/gunicorn
+    depends_on:
+      - db
+      - redis
+    command: "celery -A root worker -l INFO"
+    restart: unless-stopped
+
+  celery-beat:
+    image: "${WEB_IMAGE}"
+    volumes:
+      - static_volume:/home/app/web/static
+      - media_volume:/home/app/web/media
+      - /var/run/visa:/var/run/gunicorn
+    depends_on:
+      - db
+      - redis
+    command: "celery -A root beat -l INFO"
+    restart: unless-stopped
+
+  nginx:
+    image: "${NGINX_IMAGE}"
+    volumes:
+      - static_volume:/home/app/web/static
+      - media_volume:/home/app/web/media
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+      - ./run/redis:/var/run/redis
+      - /tmp/acme_challenge:/tmp/acme_challenge
+      - /var/run/visa:/var/run/app
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - web
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  static_volume:
+  media_volume:

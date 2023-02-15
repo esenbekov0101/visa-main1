@@ -1,0 +1,690 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-06 10:19+0600\n"
+"PO-Revision-Date: 2023-02-06 10:20+0600\n"
+"Last-Translator: Anonymous User <anonymous@user.tld>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Translated-Using: django-rosetta 0.9.8\n"
+
+#: main/admin/__init__.py:186
+msgid "Regulate"
+msgstr "Көзөмөлдөө"
+
+#: main/admin/filters.py:9
+msgid "By curator"
+msgstr "куратор бойунча"
+
+#: main/choices.py:8
+msgid "manager"
+msgstr "менеджер"
+
+#: main/choices.py:9
+msgid "operator"
+msgstr "оператор"
+
+#: main/choices.py:10
+msgid "owner"
+msgstr "компания ээси"
+
+#: main/choices.py:11 main/models/payments.py:33 main/models/users.py:89
+msgid "teacher"
+msgstr "мугалим"
+
+#: main/choices.py:15
+msgid "Mon-Wed-Fri"
+msgstr "1-3-5"
+
+#: main/choices.py:16
+msgid "Tue-Thu-Sat"
+msgstr "2-4-6"
+
+#: main/choices.py:36
+msgid "instagram"
+msgstr "instagram"
+
+#: main/choices.py:37
+msgid "friend"
+msgstr "досу"
+
+#: main/choices.py:38
+msgid "banners"
+msgstr "баннерлер"
+
+#: main/choices.py:39
+msgid "partners"
+msgstr "өнөктөштөр"
+
+#: main/choices.py:40
+msgid "used to go"
+msgstr "мурда келип жүргөн"
+
+#: main/choices.py:41
+msgid "internet"
+msgstr "интернет"
+
+#: main/choices.py:45
+msgid "trial"
+msgstr "сынамык"
+
+#: main/choices.py:46
+msgid "additional"
+msgstr "кошумча"
+
+#: main/choices.py:50
+msgid "pending"
+msgstr "күтүүдө"
+
+#: main/choices.py:51
+msgid "started"
+msgstr "башталган"
+
+#: main/choices.py:52
+msgid "success"
+msgstr "ийгиликтүү"
+
+#: main/choices.py:53
+msgid "failure"
+msgstr "ката"
+
+#: main/choices.py:54
+msgid "retry"
+msgstr "кайталоо"
+
+#: main/choices.py:55
+msgid "revoked"
+msgstr "кайтарылган"
+
+#: main/filters/group.py:13
+msgid "Not enough"
+msgstr "жетишсиз"
+
+#: main/filters/group.py:14
+msgid "Complete"
+msgstr "Толук"
+
+#: main/filters/group.py:15
+msgid "Over"
+msgstr "Ашык"
+
+#: main/filters/group.py:17
+msgid "Completeness"
+msgstr "толуктугу"
+
+#: main/filters/group.py:25 main/filters/plan.py:12
+#: main/models/organization.py:147 main/models/organization.py:196
+#: main/models/users.py:126
+msgid "student"
+msgstr "студент"
+
+#: main/filters/plan.py:17 main/models/organization.py:136
+#: main/models/organization.py:149 main/models/payments.py:34
+msgid "group"
+msgstr "тайпа"
+
+#: main/filters/student.py:10
+msgid "Has loan"
+msgstr "карызы барбы?"
+
+#: main/models/managers.py:23
+msgid "Users must have a username"
+msgstr "Колдонуучу аты болушу керек"
+
+#: main/models/organization.py:13 main/models/organization.py:25
+#: main/models/organization.py:42 main/models/organization.py:74
+#: main/models/organization.py:99 main/models/organization.py:183
+#: main/models/organization.py:228 main/models/payments.py:9
+msgid "name"
+msgstr "аты"
+
+#: main/models/organization.py:14 main/models/payments.py:10
+#: main/models/users.py:45
+msgid "address"
+msgstr "дареги"
+
+#: main/models/organization.py:17 main/models/organization.py:27
+#: main/models/organization.py:46 main/models/organization.py:101
+#: main/models/users.py:41 main/models/users.py:105
+msgid "branch"
+msgstr "филиал"
+
+#: main/models/organization.py:18
+msgid "branches"
+msgstr "филиалдар"
+
+#: main/models/organization.py:29 main/models/organization.py:50
+msgid "responsible"
+msgstr "жоопкер"
+
+#: main/models/organization.py:30 main/models/organization.py:51
+#: main/models/payments.py:25
+msgid "created"
+msgstr "жасалган убагы"
+
+#: main/models/organization.py:31 main/models/organization.py:52
+msgid "last changed"
+msgstr "акыркы өзгөртүү"
+
+#: main/models/organization.py:34
+msgid "inventory"
+msgstr "буюм"
+
+#: main/models/organization.py:35
+msgid "inventories"
+msgstr "буюмдар"
+
+#: main/models/organization.py:44 main/models/organization.py:66
+#: main/models/organization.py:103
+msgid "subject"
+msgstr "предмет"
+
+#: main/models/organization.py:47
+msgid "count"
+msgstr "саны"
+
+#: main/models/organization.py:48
+msgid "price"
+msgstr "баасы"
+
+#: main/models/organization.py:55
+msgid "book"
+msgstr "китеп"
+
+#: main/models/organization.py:56
+msgid "books"
+msgstr "китептер"
+
+#: main/models/organization.py:63
+msgid "title"
+msgstr "аталышы"
+
+#: main/models/organization.py:67 main/models/users.py:38
+msgid "subjects"
+msgstr "предметтер"
+
+#: main/models/organization.py:75
+msgid "batch price"
+msgstr "баасы"
+
+#: main/models/organization.py:76
+msgid "single price"
+msgstr "күнүмдүк баасы"
+
+#: main/models/organization.py:77 main/models/organization.py:106
+msgid "maximum number of students"
+msgstr "студенттердин максимум саны"
+
+#: main/models/organization.py:78 main/models/organization.py:157
+#: main/models/users.py:120 main/models/users.py:153 main/models/users.py:173
+msgid "created at"
+msgstr "жасалган убагы"
+
+#: main/models/organization.py:81
+msgid "plan"
+msgstr "тариф"
+
+#: main/models/organization.py:82
+msgid "plans"
+msgstr "тарифтер"
+
+#: main/models/organization.py:100 main/models/organization.py:150
+msgid "level"
+msgstr "даража"
+
+#: main/models/organization.py:107 main/models/organization.py:152
+msgid "days type"
+msgstr "күндүн түрү"
+
+#: main/models/organization.py:108 main/models/organization.py:154
+msgid "start time"
+msgstr "башталуу убагы"
+
+#: main/models/organization.py:110
+msgid "current teacher"
+msgstr "учурдагы мугалим"
+
+#: main/models/organization.py:111 main/models/organization.py:156
+#: main/models/users.py:46 main/models/users.py:108 main/models/users.py:148
+#: main/models/users.py:168
+msgid "comment"
+msgstr "пикир"
+
+#: main/models/organization.py:113
+msgid "is archived"
+msgstr "архив болгон?"
+
+#: main/models/organization.py:114
+msgid "started at"
+msgstr "старт алган күнү"
+
+#: main/models/organization.py:137
+msgid "groups"
+msgstr "тайпалар"
+
+#: main/models/organization.py:171 main/models/organization.py:198
+msgid "lesson"
+msgstr "сабак"
+
+#: main/models/organization.py:172
+msgid "lessons"
+msgstr "сабактар"
+
+#: main/models/organization.py:184
+msgid "is deletable"
+msgstr "өчүрсө болобу?"
+
+#: main/models/organization.py:187 main/models/organization.py:202
+msgid "absence reason"
+msgstr "келбөө себеби"
+
+#: main/models/organization.py:188
+msgid "absence reasons"
+msgstr "келбөө себептери"
+
+#: main/models/organization.py:200
+msgid "has participated"
+msgstr "катышты?"
+
+#: main/models/organization.py:203
+msgid "lesson price"
+msgstr "сабактын баасы"
+
+#: main/models/organization.py:206
+msgid "student lesson"
+msgstr "студенттин сабактары"
+
+#: main/models/organization.py:207
+msgid "student lessons"
+msgstr "студент сабактары"
+
+#: main/models/organization.py:222
+msgid "task id"
+msgstr "милдет id"
+
+#: main/models/organization.py:224
+msgid "status"
+msgstr "статус"
+
+#: main/models/organization.py:225
+msgid "result"
+msgstr "жыйынтык"
+
+#: main/models/organization.py:226
+msgid "date done"
+msgstr "жыйынтыкталган күнү"
+
+#: main/models/organization.py:227
+msgid "traceback"
+msgstr "трейсбак"
+
+#: main/models/organization.py:229
+msgid "args"
+msgstr "аргументтер"
+
+#: main/models/organization.py:230
+msgid "kwargs"
+msgstr "кваргументтер"
+
+#: main/models/organization.py:231
+msgid "worker"
+msgstr "уоркер"
+
+#: main/models/organization.py:232
+msgid "retries"
+msgstr "кайталоолор"
+
+#: main/models/organization.py:233
+msgid "queue"
+msgstr "кезек"
+
+#: main/models/organization.py:238
+msgid "celery task"
+msgstr "селери таск"
+
+#: main/models/organization.py:239
+msgid "celery tasks"
+msgstr "селери тасктар"
+
+#: main/models/payments.py:11
+msgid "access token"
+msgstr "жетүү токени"
+
+#: main/models/payments.py:14
+msgid "terminal"
+msgstr "терминал"
+
+#: main/models/payments.py:15
+msgid "terminals"
+msgstr "терминалдар"
+
+#: main/models/payments.py:22
+msgid "amount"
+msgstr "сумма"
+
+#: main/models/payments.py:28
+msgid "payment"
+msgstr "төлөм"
+
+#: main/models/payments.py:29
+msgid "payments"
+msgstr "төлөмдөр"
+
+#: main/models/payments.py:35
+msgid "rate"
+msgstr "үлүш"
+
+#: main/models/payments.py:38
+msgid "earning rate"
+msgstr "мугалимдин группадагы үлүшү"
+
+#: main/models/payments.py:39
+msgid "earning rates"
+msgstr "мугалимдин группадагы үлүштөрү"
+
+#: main/models/users.py:34 main/models/users.py:95
+msgid "phone"
+msgstr "номери"
+
+#: main/models/users.py:36
+msgid "full name"
+msgstr "аты жөнү"
+
+#: main/models/users.py:37 main/models/users.py:103
+msgid "birth day"
+msgstr "туулган күнү"
+
+#: main/models/users.py:39
+msgid "role"
+msgstr "ролу"
+
+#: main/models/users.py:43 main/models/users.py:114
+msgid "phones"
+msgstr "номерлери"
+
+#: main/models/users.py:44
+msgid "inn"
+msgstr "ИНН"
+
+#: main/models/users.py:47
+msgid "is active"
+msgstr "активдүүбү?"
+
+#: main/models/users.py:48
+msgid "is staff"
+msgstr "кызматкер статусу"
+
+#: main/models/users.py:49
+msgid "is fired"
+msgstr "бошотулду?"
+
+#: main/models/users.py:58
+msgid "user"
+msgstr "колдонуучу"
+
+#: main/models/users.py:59
+msgid "users"
+msgstr "колдонуучулар"
+
+#: main/models/users.py:90
+msgid "teachers"
+msgstr "мугалимдер"
+
+#: main/models/users.py:97
+msgid "first name"
+msgstr "аты"
+
+#: main/models/users.py:99
+msgid "middle name"
+msgstr "атасынын аты"
+
+#: main/models/users.py:102
+msgid "last_name"
+msgstr "фамилия"
+
+#: main/models/users.py:106
+msgid "balance"
+msgstr "баланс"
+
+#: main/models/users.py:107
+msgid "promoter"
+msgstr "кайдан укту"
+
+#: main/models/users.py:111
+msgid "paused"
+msgstr "токтотулган"
+
+#: main/models/users.py:112
+msgid "blacklist"
+msgstr "кара тизме"
+
+#: main/models/users.py:118
+msgid "curator"
+msgstr "куратору"
+
+#: main/models/users.py:127
+msgid "students"
+msgstr "студенттер"
+
+#: main/models/users.py:129
+msgid "Manage students in the same branch"
+msgstr "Өзүңүздүн филиалда студенттерди башкаруу"
+
+#: main/models/users.py:146 main/models/users.py:166
+msgid "actor"
+msgstr "жасаган"
+
+#: main/models/users.py:147 main/models/users.py:167
+msgid "description"
+msgstr "ачыктама"
+
+#: main/models/users.py:156
+msgid "history"
+msgstr "тарых"
+
+#: main/models/users.py:157
+msgid "histories"
+msgstr "тарыхтар"
+
+#: main/models/users.py:176
+msgid "teacher history"
+msgstr "мугалимдин тарыхы"
+
+#: main/models/users.py:177
+msgid "teacher histories"
+msgstr "мугалимдин тарыхтары"
+
+#: main/permissions/exceptions.py:11
+msgid "Terminal-Authorization Token not provided"
+msgstr "Terminal-Authorization токени көрсөтүлгөн эмес"
+
+#: main/permissions/exceptions.py:16
+msgid "Terminal-Authorization Token format is invalid"
+msgstr "Terminal-Authorization токендин форматы туура эмес"
+
+#: main/permissions/exceptions.py:21
+msgid "Invalid Terminal-Authorization token provided"
+msgstr "Terminal-Authorization токени туура эмес"
+
+#: main/permissions/exceptions.py:26
+msgid "For this action you must to have a branch"
+msgstr "Бул аракет үчүн филиалда иштөө керек."
+
+#: main/serializers/attendance.py:106
+msgid "Lesson already aborted"
+msgstr "Сабак мурдатан жокко чыгарылган"
+
+#: main/serializers/attendance.py:110
+msgid "Lesson already taken place"
+msgstr "Сабак мурдатан оорун алган"
+
+#: main/serializers/attendance.py:116
+#, python-format
+msgid "Can not process. Try it %(delta)s later"
+msgstr "Иштетилген жок. %(delta)s кийин кайталаңыз"
+
+#: main/serializers/attendance.py:120
+msgid "Can not process. You had to marked this lesson earlier"
+msgstr "Иштетилген жок. Сиз бираз кеч калдыңыз"
+
+#: main/serializers/group.py:270 main/serializers/group.py:330
+msgid "This student already subscribed to given group"
+msgstr "Студент бул группага мурдатан эле жазылган "
+
+#: main/serializers/group.py:285
+msgid "This student is not subscribed to given group"
+msgstr "Студент бул группага жазылган эмес "
+
+#: main/serializers/group.py:334 main/serializers/student.py:520
+msgid "This student already pending given group"
+msgstr "Студент бул группаны мурдатан эле күтүп жүрөт  "
+
+#: main/serializers/group.py:353 main/serializers/student.py:477
+msgid "Insufficient balance"
+msgstr "Бул төлөмдү ишке ашырууга баланс жетерсиз"
+
+#: main/serializers/group.py:357
+msgid "No book left to sell"
+msgstr "сатууга китеп калбады"
+
+#: main/serializers/student.py:185
+msgid "Should not be in past time"
+msgstr "Өткөн чакта болуусу мүмкүн эмес"
+
+#: main/serializers/student.py:278 main/serializers/student.py:379
+#: main/serializers/student.py:451
+msgid "This student not subscribed to given group."
+msgstr "Студент бул группага жазылган эмес "
+
+#: main/serializers/student.py:285
+msgid "Insufficient balance to complete this payment"
+msgstr "Бул төлөмдү ишке ашырууга баланс жетерсиз"
+
+#: main/serializers/student.py:310
+msgid "This student already subscribed to given group."
+msgstr "Студент бул группага мурдатан эле жазылган "
+
+#: main/serializers/student.py:319
+msgid "This student already had lesson from this group"
+msgstr "Студент бул группадан мурдатан эле сабак алган  "
+
+#: main/serializers/student.py:386
+msgid "This student already has unpaid loan"
+msgstr "Студент мурдатан эле төлөнбөгөн карызы бар"
+
+#: main/serializers/studentlesson.py:35
+msgid "null value not allowed"
+msgstr "null мааниси кабыл алынбайт"
+
+#: main/serializers/studentlesson.py:43
+msgid "This field is required"
+msgstr "бул талаа керектүү"
+
+#: main/serializers/studentlesson.py:51 main/serializers/studentlesson.py:63
+msgid "absence reason must not be null when student did not participated"
+msgstr "студент сабакка катышпаган учурда себеби болуусу керек"
+
+#: main/serializers/studentlesson.py:71
+msgid "Could not process. Try again after marking the lesson as taken place"
+msgstr ""
+"Иштетилген жок. Сабакты өтүлгөн деп белгилегенден кийин кайрадан аракет "
+"кылып көрүңүз."
+
+#: main/serializers/studentlesson.py:75
+msgid "Could not process. Student can not participate to a cancelled lesson"
+msgstr ""
+"  Суроо иштетилген жок. Студент жокко чыгарылган сабакка катыша албайт."
+
+#: main/serializers/studentlesson.py:79
+msgid "This student already marked as participated"
+msgstr "Студент мурдатан эле катышкан деп белгиленген"
+
+#: main/serializers/terminal.py:23
+msgid "There is no Terminal with these credentials"
+msgstr "Бул реквизиттерге бир да терминал туура келбейт"
+
+#: main/serializers/utils.py:38
+#, python-format
+msgid "%(day)d day"
+msgid_plural "%(day)d days"
+msgstr[0] "%(day)d күн"
+
+#: main/serializers/utils.py:41
+#, python-format
+msgid "%(hour)d hour"
+msgid_plural "%(hour)d hours"
+msgstr[0] "%(hour)d саат"
+
+#: main/serializers/utils.py:46
+#, python-format
+msgid "%(m)d minute"
+msgid_plural "%(m)d minutes"
+msgstr[0] " %(m)d мүнөт"
+
+#: main/validators.py:6
+msgid "Phone number must be in the format: 996XXX123456."
+msgstr "Телефон номери бул форматта болушу керек: 996XXX123456."
+
+#: main/views/group.py:169
+msgid "This group has no book"
+msgstr "Бул группа китепке ээ эмес"
+
+#: main/views/group.py:243
+msgid "Can not archive group which has active lessons"
+msgstr "активдүү сабактары бар группаны архивдөөгө мүмкүн эмес"
+
+#: main/views/teacher.py:112
+msgid ""
+"This teacher has active groups or lessons. You should replace them with "
+"another teacher before firing the teacher."
+msgstr ""
+"Бул мугалим активдүү группа жана сабактары бар. Аларды башка мугалимге "
+"берүүңүз керек болот."
+
+#: root/settings.py:139
+msgid "Kyrgyz"
+msgstr "Кыргызча"
+
+#: root/settings.py:140
+msgid "English"
+msgstr "English"
+
+#: root/settings.py:141
+msgid "Russian"
+msgstr "Русский"
+
+#: templates/admin/base_site.html:17
+msgid "Documentation"
+msgstr "Түшүндүрмө"
+
+#: templates/admin/base_site.html:21
+msgid "Change password"
+msgstr "Сырсөз өзгөртүү"
+
+#: templates/admin/base_site.html:23
+msgid "Log out"
+msgstr "Чыгуу"
+
+#: templates/admin/input_filter.html:3
+#, python-format
+msgid " By %(filter_title)s "
+msgstr "%(filter_title)s боюнча"
+
+#: templates/admin/input_filter.html:18
+msgid "Remove"
+msgstr "Алуу"
+
+#: templates/rosetta/base.html:18
+msgid "Admin"
+msgstr "Админ панели"

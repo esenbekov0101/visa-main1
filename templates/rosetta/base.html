@@ -1,0 +1,20 @@
+{% extends 'rosetta/base.html' %}
+{% load i18n %}
+{% block header %}
+    <div id="branding">
+        <h1 id="site-name"><a href="{% url 'rosetta-file-list' po_filter='project' %}">Rosetta</a></h1>
+    </div>
+    <div id="user-tools">
+        {% get_available_languages as langs %}
+        {% get_current_language as curr %}
+        {% for lang, val in langs %}
+            {% if lang != curr %}
+                <a style="border-right: none; padding: 0; margin: 0; "
+                   href="{% url 'lang' lang %}">
+                    {{ lang }} /
+                </a>
+            {% endif %}
+        {% endfor %}
+        <a href="{% url 'admin:index' %}">{% trans 'Admin' %}</a> /
+    </div>
+{% endblock %}
