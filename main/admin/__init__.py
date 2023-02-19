@@ -26,6 +26,7 @@ from main.models import Subject
 from main.models import Terminal
 from main.models import User
 
+
 admin.site.register(Subject)
 admin.site.unregister(DjangoGroup)
 
@@ -221,3 +222,4 @@ class CeleryTaskAdmin(admin.ModelAdmin):
 
     def get_kwargs(self, obj):
         return obj.kwargs.tobytes().decode()
+
