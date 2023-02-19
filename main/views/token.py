@@ -1,3 +1,5 @@
+from django.contrib.auth import get_user
+from django.utils.functional import SimpleLazyObject
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework import status
 from rest_framework.decorators import action
@@ -30,21 +32,29 @@ class TokenViewSet(ViewSetMixin,
             raise InvalidToken(e.args[0])
 
         return Response({
-            **serializer.validated_data,
-            'role': serializer.user.role,
-            'branch': serializer.user.branch.name,
-            'fullname': serializer.user.fullname,
+                **serializer.validated_data,
+                'role': serializer.user.role,
+                'branch': serializer.user.branch.name,
+                'fullname': serializer.user.fullname,
+                'inn': serializer.user.inn,
         }, status=status.HTTP_200_OK)
 
-    # noinspection PyTypeChecker
+    #noinspection PyTypeChecker
     @action(['post'], False, 'refresh')
     @swagger_auto_schema(responses={status.HTTP_200_OK: srz.TokenRefreshResponseSerializer})
-    def refresh(self, request):
+    def refresh(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
+
 
         try:
             serializer.is_valid(raise_exception=True)
         except TokenError as e:
             raise InvalidToken(e.args[0])
 
-        return Response(serializer.validated_data, status=status.HTTP_200_OK)
+        return Response({
+            **serializer.validated_data,
+            'role': serializer.user.role,
+            'branch': serializer.user.branch.name,
+            'fullname': serializer.user.fullname,
+        }, status=status.HTTP_200_OK)
+

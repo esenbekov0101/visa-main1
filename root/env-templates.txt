@@ -5,7 +5,7 @@ DEBUG=True
 SECRET_KEY=
 ALLOWED_HOSTS=localhost 127.0.0.1
 
-DB_NAME=visa_db
+DB_NAME=
 DB_USER=kdev
 DB_PWD=
 DB_HOST=localhost

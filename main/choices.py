@@ -12,8 +12,13 @@ class Role(TextChoices):
 
 
 class Day(IntegerChoices):
-    ODD = 0, _('Mon-Wed-Fri')
-    EVEN = 1, _('Tue-Thu-Sat')
+    Mon = 0, _('Monday')
+    Tu = 1, _('Tuesday')
+    We = 2, _('Wednesday')
+    Th = 3, _('Thursday')
+    Fr = 4, _('Friday')
+    Sat = 5, _('Saturday')
+    Sa = 6, _('Sunday')
 
 
 class Time(IntegerChoices):
