@@ -29,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY', 'oko%578mda0683n4tliny7@pw_%g+g298zslm*l$oqin2yzu-m')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG') == 'True'
 
 ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', 'localhost 127.0.0.1').split()
 # Application definition
@@ -43,19 +43,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    #inst_apps
     'corsheaders',
     'django_better_admin_arrayfield',
     'drf_yasg',
-    'rosetta',
+    #'rosetta',
     'rest_framework',
     'django_filters',
     'rest_framework_simplejwt',
     'rangefilter',
 
     'main.apps.MainConfig',
-
-
 ]
 
 MIDDLEWARE = [

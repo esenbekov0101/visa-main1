@@ -21,9 +21,7 @@ from django.views.i18n import JavaScriptCatalog
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from rest_framework.routers import DefaultRouter
-from rest_framework import permissions
 
-from main import views
 from main.views import *
 
 schema_view = get_schema_view(
@@ -35,8 +33,8 @@ schema_view = get_schema_view(
     public=True,
 )
 
-
 router = DefaultRouter()
+
 
 router.register('api/references/absence-reasons', AbsenceReasonViewSet, 'absence_reason')
 router.register('api/references/subject', SubjectViewSet, 'subject')
@@ -61,9 +59,7 @@ urlpatterns = [
     path('jsi18n/', JavaScriptCatalog.as_view(), name='javascript-catalog'),
     path('lang/<str:lang>/', lang_view, name='lang'),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='swagger'),
-    path('translate/', include('rosetta.urls')),
-
-
+    #path('translate/', include('rosetta.urls')),
 ]
 
 urlpatterns += router.urls
